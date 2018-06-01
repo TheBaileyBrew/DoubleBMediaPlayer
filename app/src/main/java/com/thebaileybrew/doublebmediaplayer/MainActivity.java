@@ -43,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        //TODO: Need to create the Adapter For Material Leanback
+
         //        SongItems = new ArrayList<>();
         //        SongItems.add(new songItem(1,"Luca Stricagnoli","Thunderstruck",R.drawable.luca_image_300, "Instrumental"));
         //        SongItems.add(new songItem(2,"Pop Evil", "Monster You Made", R.drawable.pop_evil_700, "Rock"));
@@ -64,32 +67,6 @@ public class MainActivity extends AppCompatActivity {
         //        SongItems.add(new songItem(18, "Imagine Dragons", "Radioactive", R.drawable.imaginedragons_1000, "Pop"));
         //        SongItems.add(new songItem(19, "Imagine Dragons", "Thunder", R.drawable.imaginedragons_1000, "Pop"));
         //        SongItems.add(new songItem(20, "Marshmello", "Alone", R.drawable.marshmello_900, "Electronic"));
-
-
-        //        mBottomNavigation = findViewById(R.id.bottom_navigation);
-        //        mBottomNavigation.setSelectedIndex(2,true);
-        //        mBottomNavigation.setOnMenuItemClickListener(new BottomNavigation.OnMenuItemSelectionListener() {
-        //            @Override
-        //            public void onMenuItemSelect(int i, int i1, boolean b) {
-        //                switch (i1) {
-        //                    case 0:   //ARTISTS
-        //                        break;
-        //                    case 1:   //GENRES
-        //                        break;
-        //                    case 2:   //HOME PAGE
-        //                        break;
-        //                    case 3:   //ALPHABETICAL
-        //                        break;
-        //                    case 4:   //PLAYLISTS
-        //                        break;
-        //                }
-        //            }
-        //
-        //            @Override
-        //            public void onMenuItemReselect(int i, int i1, boolean b) {
-        //
-        //            }
-        //        });
 
     }
 }
