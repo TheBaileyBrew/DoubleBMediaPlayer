@@ -16,6 +16,7 @@
         android:src="@drawable/baileybrewmediafade"/>
 
     <com.github.florent37.materialleanback.MaterialLeanBack
+        android:id="@+id/material_leanback"
         android:layout_width="match_parent"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"

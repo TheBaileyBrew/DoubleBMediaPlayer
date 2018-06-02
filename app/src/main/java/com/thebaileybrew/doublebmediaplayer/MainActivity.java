@@ -4,6 +4,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 
 import it.sephiroth.android.library.bottomnavigation.BottomNavigation;
 
@@ -12,11 +13,14 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigation musicNavigator;
     PagerAdapter musicPagerAdapter;
 
+    Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         //https://github.com/florent37/DiagonalLayout
 
@@ -36,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
             public void onMenuItemSelect(int i, int i1, boolean b) {
                 pager.setCurrentItem(i1,true);
             }
-
             @Override
             public void onMenuItemReselect(int i, int i1, boolean b) {
 
