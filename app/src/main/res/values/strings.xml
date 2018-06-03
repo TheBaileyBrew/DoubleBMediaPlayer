@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Bailey Brew Media Player</string>
+    <string name="left_arrow"><![CDATA[<]]></string>
+    <string name="right_arrow"><![CDATA[>]]></string>
 </resources>

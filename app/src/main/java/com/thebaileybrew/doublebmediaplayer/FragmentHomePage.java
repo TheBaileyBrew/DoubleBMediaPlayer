@@ -1,11 +1,13 @@
 package com.thebaileybrew.doublebmediaplayer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.github.florent37.materialleanback.MaterialLeanBack;
 
@@ -18,6 +20,11 @@ public class FragmentHomePage extends Fragment {
         return fragment;
     }
 
+    String selectedArtist;
+    String selectedSong;
+    int selectedImage;
+    List<songItem> SongItems;
+
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +32,8 @@ public class FragmentHomePage extends Fragment {
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-        final List<songItem> SongItems;
+
+        final View view = inflater.inflate(R.layout.fragment_home, container, false);
         SongItems = new ArrayList<>();
         SongItems.add(new songItem(1,"Luca Stricagnoli","Thunderstruck",R.drawable.luca_image_300, "Instrumental"));
         SongItems.add(new songItem(2,"Pop Evil", "Monster You Made", R.drawable.pop_evil_700, "Rock"));
@@ -53,12 +60,12 @@ public class FragmentHomePage extends Fragment {
         materialLeanBack.setAdapter(new MaterialLeanBack.Adapter<MusicViewHolder>() {
             @Override
             public int getLineCount() {
-                return SongItems.size();
+                return 1;
             }
 
             @Override
             public int getCellsCount(int row) {
-                return 1;
+                return SongItems.size();
             }
 
             @Override
@@ -73,6 +80,8 @@ public class FragmentHomePage extends Fragment {
                 viewHolder.songName.setText(SongItems.get(position).getSongName());
                 viewHolder.songImage.setImageResource(SongItems.get(position).getImage());
             }
+
+            
         });
 
 
@@ -84,6 +93,17 @@ public class FragmentHomePage extends Fragment {
 
             @Override
             public void onItemClicked(int row, int column) {
+                column = column -1;
+                selectedArtist = SongItems.get(column).getArtistName();
+                selectedSong = SongItems.get(column).getSongName();
+                selectedImage = SongItems.get(column).getImage();
+                Toast.makeText(view.getContext(), "You've selected: " + selectedArtist + " and " + selectedSong, Toast.LENGTH_LONG).show();
+                Intent openSongPlayer = new Intent(view.getContext(),CurrentlyPlaying.class);
+                openSongPlayer.putExtra("SelectedArtist", selectedArtist);
+                openSongPlayer.putExtra("SelectedSong", selectedSong);
+                openSongPlayer.putExtra("SelectedImage", selectedImage);
+                view.getContext().startActivity(openSongPlayer);
+
 
             }
         });

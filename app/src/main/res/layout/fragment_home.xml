@@ -9,6 +9,7 @@
     <ImageView
         android:id="@+id/background_logo"
         android:alpha=".55"
+        android:layout_marginTop="30dp"
         android:layout_width="250dp"
         android:layout_height="250dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -20,18 +21,18 @@
         android:layout_width="match_parent"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="200dp"
+        android:layout_height="275dp"
+        android:layout_marginTop="300dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:mlb_lineSpacing="8dp"
-        app:mlb_paddingTop="12dp"
-        app:mlb_paddingBottom="12dp"
+        app:mlb_lineSpacing="2dp"
+        app:mlb_paddingTop="8dp"
+        app:mlb_paddingBottom="8dp"
         app:mlb_paddingLeft="8dp"
         app:mlb_paddingRight="8dp"
         app:mlb_overlapCards="true"
         app:mlb_animateCards="true"
-        app:mlb_cardElevationEnlarged="10"
-        app:mlb_cardElevationReduced="5"
+        app:mlb_cardElevationEnlarged="5"
+        app:mlb_cardElevationReduced="4"
         app:mlb_background="@android:color/transparent"/>
 
 </android.support.constraint.ConstraintLayout>
