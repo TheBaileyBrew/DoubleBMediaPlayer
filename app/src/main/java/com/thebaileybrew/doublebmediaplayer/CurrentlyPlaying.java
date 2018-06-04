@@ -7,10 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.xw.repo.BubbleSeekBar;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickListener{
@@ -80,6 +83,7 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
         playButton.setOnClickListener(this);
         forwardButton.setOnClickListener(this);
         reverseButton.setOnClickListener(this);
+        shuffleButton.setOnClickListener(this);
     }
 
     @Override
@@ -87,19 +91,19 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
         int clickedId = v.getId();
         switch (clickedId) {
             case R.id.song_forward:
-                temporaryCount = temporaryCount + 1;
                 if (temporaryCount == 19) {
                     temporaryCount = 0;
                 }
+                temporaryCount = temporaryCount + 1;
                 nowPlayingArtistImage.setImageResource(SongItems.get(temporaryCount).getImage());
                 nowPlayingArtist.setText(SongItems.get(temporaryCount).getArtistName());
                 nowPlayingSong.setText(SongItems.get(temporaryCount).getSongName());
                 break;
             case R.id.song_rewind:
-                temporaryCount = temporaryCount - 1;
                 if (temporaryCount == 0) {
                     temporaryCount = 19;
                 }
+                temporaryCount = temporaryCount - 1;
                 nowPlayingArtistImage.setImageResource(SongItems.get(temporaryCount).getImage());
                 nowPlayingArtist.setText(SongItems.get(temporaryCount).getArtistName());
                 nowPlayingSong.setText(SongItems.get(temporaryCount).getSongName());
@@ -113,6 +117,13 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
                     isPlaying = true;
                     //TODO: Set the musicSeekbar progressbar animation
                 }
+                break;
+            case R.id.song_shuffle:
+                Collections.shuffle(SongItems);
+                Toast.makeText(this, "You've shuffled the ArrayList. Random song will be selected", Toast.LENGTH_SHORT).show();
+                nowPlayingArtistImage.setImageResource(SongItems.get(temporaryCount).getImage());
+                nowPlayingArtist.setText(SongItems.get(temporaryCount).getArtistName());
+                nowPlayingSong.setText(SongItems.get(temporaryCount).getSongName());
         }
     }
 }
