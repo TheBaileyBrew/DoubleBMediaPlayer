@@ -13,11 +13,10 @@ import com.xw.repo.BubbleSeekBar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CurrentlyPlaying extends AppCompatActivity {
+public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickListener{
 
     List<songItem> SongItems;
-    int temporaryStartBottom = 1;
-    int temporaryStartTop = 20;
+    int temporaryCount;
     String currentArtist;
     String currentSong;
     int currentImage;
@@ -27,7 +26,10 @@ public class CurrentlyPlaying extends AppCompatActivity {
     Button playButton;
     Button forwardButton;
     Button reverseButton;
-    Boolean isPlaying;
+    Button shuffleButton;
+    Button loopButton;
+    Button listButton;
+    Boolean isPlaying = false;
     BubbleSeekBar musicSeekbar;
 
     @Override
@@ -56,62 +58,61 @@ public class CurrentlyPlaying extends AppCompatActivity {
         SongItems.add(new songItem(19, "Imagine Dragons", "Thunder", R.drawable.imaginedragons_1000, "Pop"));
         SongItems.add(new songItem(20, "Marshmello", "Alone", R.drawable.marshmello_900, "Electronic"));
 
-
-
         setContentView(R.layout.activity_currently_playing);
         nowPlayingArtistImage = findViewById(R.id.now_playing_artist_image);
         nowPlayingArtist = findViewById(R.id.now_playing_artist_name);
         nowPlayingSong = findViewById(R.id.now_playing_song_name);
         musicSeekbar = findViewById(R.id.song_progress);
         playButton = findViewById(R.id.song_play_pause);
-        isPlaying = false;
-        playButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        forwardButton = findViewById(R.id.song_forward);
+        reverseButton = findViewById(R.id.song_rewind);
+        shuffleButton = findViewById(R.id.song_shuffle);
+        loopButton = findViewById(R.id.song_loop);
+        listButton = findViewById(R.id.song_playlists);
+        currentImage = getIntent().getIntExtra("SelectedImage", 0);
+        currentArtist = getIntent().getStringExtra("SelectedArtist");
+        currentSong = getIntent().getStringExtra("SelectedSong");
+        //Set initial Current Playing view
+        nowPlayingArtist.setText(currentArtist);
+        nowPlayingSong.setText(currentSong);
+        nowPlayingArtistImage.setImageResource(currentImage);
+        //Set onClickListeners for buttons
+        playButton.setOnClickListener(this);
+        forwardButton.setOnClickListener(this);
+        reverseButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        int clickedId = v.getId();
+        switch (clickedId) {
+            case R.id.song_forward:
+                temporaryCount = temporaryCount + 1;
+                if (temporaryCount == 19) {
+                    temporaryCount = 0;
+                }
+                nowPlayingArtistImage.setImageResource(SongItems.get(temporaryCount).getImage());
+                nowPlayingArtist.setText(SongItems.get(temporaryCount).getArtistName());
+                nowPlayingSong.setText(SongItems.get(temporaryCount).getSongName());
+                break;
+            case R.id.song_rewind:
+                temporaryCount = temporaryCount - 1;
+                if (temporaryCount == 0) {
+                    temporaryCount = 19;
+                }
+                nowPlayingArtistImage.setImageResource(SongItems.get(temporaryCount).getImage());
+                nowPlayingArtist.setText(SongItems.get(temporaryCount).getArtistName());
+                nowPlayingSong.setText(SongItems.get(temporaryCount).getSongName());
+                break;
+            case R.id.song_play_pause:
                 if (isPlaying) {
                     playButton.setText("PLAY");
                     isPlaying = false;
                 } else {
                     playButton.setText("PAUSE");
                     isPlaying = true;
-                    //Set the musicSeekbar animation
-
+                    //TODO: Set the musicSeekbar progressbar animation
                 }
-
-            }
-        });
-        forwardButton = findViewById(R.id.song_forward);
-        forwardButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                temporaryStartBottom = temporaryStartBottom + 1;
-                nowPlayingArtistImage.setImageResource(SongItems.get(temporaryStartBottom).getImage());
-                nowPlayingArtist.setText(SongItems.get(temporaryStartBottom).getArtistName());
-                nowPlayingSong.setText(SongItems.get(temporaryStartBottom).getSongName());
-            }
-        });
-        reverseButton = findViewById(R.id.song_rewind);
-        reverseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                temporaryStartTop = temporaryStartTop - 1;
-                nowPlayingArtistImage.setImageResource(SongItems.get(temporaryStartTop).getImage());
-                nowPlayingArtist.setText(SongItems.get(temporaryStartTop).getArtistName());
-                nowPlayingSong.setText(SongItems.get(temporaryStartTop).getSongName());
-            }
-        });
-
-        currentImage = getIntent().getIntExtra("SelectedImage", 0);
-        currentArtist = getIntent().getStringExtra("SelectedArtist");
-        currentSong = getIntent().getStringExtra("SelectedSong");
-        nowPlayingArtist.setText(currentArtist);
-        nowPlayingSong.setText(currentSong);
-        nowPlayingArtistImage.setImageResource(currentImage);
-
-
-
-
-
+        }
     }
-
 }

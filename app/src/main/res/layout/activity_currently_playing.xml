@@ -52,8 +52,9 @@
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
+            <Button
                 android:id="@+id/song_shuffle"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -61,8 +62,9 @@
                 android:fontFamily="@font/no_reference"
                 android:textColor="@color/colorAccentFade"
                 android:text="SHUFFLE"/>
-            <TextView
+            <Button
                 android:id="@+id/song_loop"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -70,8 +72,9 @@
                 android:fontFamily="@font/no_reference"
                 android:textColor="@color/colorAccentFade"
                 android:text="LOOP"/>
-            <TextView
+            <Button
                 android:id="@+id/song_playlists"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -88,6 +91,7 @@
             android:layout_centerHorizontal="true"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:textColor="@color/colorAccent"
+            android:elevation="6dp"
             android:textSize="36sp"
             android:fontFamily="@font/no_reference"
             android:text="PLAY"/>
@@ -99,6 +103,7 @@
             android:layout_height="wrap_content"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:textColor="@color/colorAccent"
+            android:elevation="6dp"
             android:textSize="36sp"
             android:text="@string/left_arrow"/>
         <Button
@@ -109,36 +114,41 @@
             android:layout_height="wrap_content"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:textColor="@color/colorAccent"
+            android:elevation="6dp"
             android:textSize="36sp"
             android:text="@string/right_arrow"/>
         <TextView
             android:id="@+id/now_playing_artist_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="125dp"
-            android:layout_marginRight="32dp"
+            android:layout_marginTop="300dp"
+            android:layout_marginRight="26dp"
             android:layout_alignParentEnd="true"
-            android:layout_above="@id/song_play_pause"
             android:fontFamily="@font/no_reference"
-            android:textSize="66sp"
-            android:elevation="6dp"
+            android:textSize="60sp"
+            android:shadowDx="6"
+            android:shadowDy="6"
+            android:shadowRadius="4"
+            android:shadowColor="@color/colorPrimary"
             android:textColor="@color/colorPrimaryText"
             android:text="ARTIST NAME"/>
         <TextView
             android:id="@+id/now_playing_song_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:layout_marginRight="32dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="26dp"
             android:layout_alignParentEnd="true"
             android:layout_above="@id/song_play_pause"
+            android:layout_below="@id/now_playing_artist_name"
             android:fontFamily="@font/no_reference"
-            android:textSize="62sp"
-            android:elevation="6dp"
+            android:textSize="52sp"
+            android:shadowDx="6"
+            android:shadowDy="6"
+            android:shadowRadius="4"
+            android:shadowColor="@color/colorPrimary"
             android:textColor="@color/colorPrimaryText"
             android:text="SONG NAME"/>
-
-
     </RelativeLayout>
 
 
