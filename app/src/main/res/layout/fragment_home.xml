@@ -3,26 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@android:color/transparent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/background_logo"
-        android:alpha=".55"
-        android:layout_marginTop="30dp"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:src="@drawable/baileybrewmediafade"/>
+
 
     <com.github.florent37.materialleanback.MaterialLeanBack
         android:id="@+id/material_leanback"
         android:layout_width="match_parent"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_height="275dp"
-        android:layout_marginTop="300dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="235dp"
         app:layout_constraintTop_toTopOf="parent"
         app:mlb_lineSpacing="2dp"
         app:mlb_paddingTop="8dp"

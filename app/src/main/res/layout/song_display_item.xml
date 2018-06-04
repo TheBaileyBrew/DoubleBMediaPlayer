@@ -4,37 +4,37 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout
-        android:layout_width="280dp"
-        android:layout_height="240dp"
+        android:layout_width="240dp"
+        android:layout_height="225dp"
         android:layout_marginBottom="4dp">
-    <ImageView
-        android:id="@+id/cardview_artist_image"
-        android:scaleType="centerCrop"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/andymckee_800"
-        />
-    <TextView
-        android:id="@+id/cardview_song_name"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/colorDivider"
-        android:gravity="center_horizontal"
-        android:layout_alignBottom="@id/cardview_artist_image"
-        android:fontFamily="@font/no_reference"
-        android:textSize="28sp"
-        android:textColor="@color/colorPrimaryText"
-        android:text="SONG NAME HERE"/>
-    <TextView
-        android:id="@+id/cardview_artist_name"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/colorDivider"
-        android:gravity="center_horizontal"
-        android:layout_above="@id/cardview_song_name"
-        android:fontFamily="@font/no_reference"
-        android:textSize="34sp"
-        android:textColor="@color/colorPrimaryText"
-        android:text="ARTIST NAME"/>
+        <ImageView
+            android:id="@+id/cardview_artist_image"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/andymckee_800"
+            />
+        <TextView
+            android:id="@+id/cardview_song_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorDivider"
+            android:gravity="center_horizontal"
+            android:layout_alignBottom="@id/cardview_artist_image"
+            android:fontFamily="@font/no_reference"
+            android:textSize="22sp"
+            android:textColor="@color/colorPrimaryText"
+            android:text="SONG NAME HERE"/>
+        <TextView
+            android:id="@+id/cardview_artist_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorDivider"
+            android:gravity="center_horizontal"
+            android:layout_above="@id/cardview_song_name"
+            android:fontFamily="@font/no_reference"
+            android:textSize="32sp"
+            android:textColor="@color/colorPrimaryText"
+            android:text="ARTIST NAME"/>
     </RelativeLayout>
 </FrameLayout>

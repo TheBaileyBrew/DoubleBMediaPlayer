@@ -1,11 +1,64 @@
 <resources>
-
+    <!-- Toolbar Styling Guide implemented from https://medium.com/@lucasurbas/making-android-toolbar-responsive-2627d4e07129 -->
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
+        <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
+        <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="actionModeStyle">@style/Custom.Widget.ActionMode</item>
+        <item name="actionModeCloseButtonStyle">@style/Custom.Widget.ActionButton.CloseMode</item>
+        <item name="android:popupMenuStyle">@style/menu_text</item>
+    </style>
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">30sp</item>
+        <item name="android:fontFamily">@font/no_reference</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:shadowDx">4</item>
+        <item name="android:shadowDy">4</item>
+        <item name="android:shadowRadius">2</item>
+        <item name="android:shadowColor">@color/colorPrimaryText</item>
+    </style>
+
+    <style name="Custom.Widget.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="maxButtonHeight">48dp</item>
+        <item name="android:paddingTop">@dimen/toolbar_vertical_padding</item>
+        <item name="android:paddingLeft">@dimen/toolbar_horizontal_padding</item>
+        <item name="android:paddingRight">@dimen/toolbar_horizontal_padding</item>
+        <item name="contentInsetStart">@dimen/first_keyline</item>
+    </style>
+
+    <style name="Custom.Widget.Toolbar.Button.Navigation" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:minWidth">48dp</item>
+    </style>
+
+    <style name="Custom.Widget.ActionButton.Overflow" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:fontFamily">@font/no_reference</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="Custom.Widget.ActionMode" parent="Widget.AppCompat.ActionMode">
+        <item name="android:paddingLeft">@dimen/toolbar_horizontal_padding</item>
+        <item name="android:paddingRight">@dimen/toolbar_horizontal_padding</item>
+    </style>
+
+    <style name="Custom.Widget.ActionButton.CloseMode" parent="Widget.AppCompat.ActionButton.CloseMode">
+        <item name="android:layout_marginRight">20dp</item>
+    </style>
+
+    <style name="menu_text">
+        <item name="android:fontFamily">@font/no_reference</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
     </style>
 
 </resources>

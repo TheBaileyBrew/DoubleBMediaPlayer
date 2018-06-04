@@ -2,6 +2,7 @@ package com.thebaileybrew.doublebmediaplayer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,7 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
     String currentArtist;
     String currentSong;
     int currentImage;
+    int currentPosition;
     TextView nowPlayingArtist;
     TextView nowPlayingSong;
     ImageView nowPlayingArtistImage;
@@ -33,7 +35,9 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
     Button loopButton;
     Button listButton;
     Boolean isPlaying = false;
+    Boolean isShuffled = false;
     BubbleSeekBar musicSeekbar;
+    Handler updateHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,8 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
         SongItems.add(new songItem(20, "Marshmello", "Alone", R.drawable.marshmello_900, "Electronic"));
 
         setContentView(R.layout.activity_currently_playing);
+
+        //Define runnable for seekbar progression
         nowPlayingArtistImage = findViewById(R.id.now_playing_artist_image);
         nowPlayingArtist = findViewById(R.id.now_playing_artist_name);
         nowPlayingSong = findViewById(R.id.now_playing_song_name);
@@ -75,6 +81,8 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
         currentImage = getIntent().getIntExtra("SelectedImage", 0);
         currentArtist = getIntent().getStringExtra("SelectedArtist");
         currentSong = getIntent().getStringExtra("SelectedSong");
+        currentPosition = getIntent().getIntExtra("Position", 0);
+        temporaryCount = currentPosition - 1;
         //Set initial Current Playing view
         nowPlayingArtist.setText(currentArtist);
         nowPlayingSong.setText(currentSong);
@@ -92,7 +100,7 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
         switch (clickedId) {
             case R.id.song_forward:
                 if (temporaryCount == 19) {
-                    temporaryCount = 0;
+                    temporaryCount = -1;
                 }
                 temporaryCount = temporaryCount + 1;
                 nowPlayingArtistImage.setImageResource(SongItems.get(temporaryCount).getImage());
@@ -101,7 +109,7 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.song_rewind:
                 if (temporaryCount == 0) {
-                    temporaryCount = 19;
+                    temporaryCount = 20;
                 }
                 temporaryCount = temporaryCount - 1;
                 nowPlayingArtistImage.setImageResource(SongItems.get(temporaryCount).getImage());
@@ -119,8 +127,16 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
                 }
                 break;
             case R.id.song_shuffle:
-                Collections.shuffle(SongItems);
-                Toast.makeText(this, "You've shuffled the ArrayList. Random song will be selected", Toast.LENGTH_SHORT).show();
+                if (isShuffled) {
+                    shuffleButton.setTextColor(getResources().getColor(R.color.colorAccent));
+                    isShuffled = false;
+                    Toast.makeText(this, "You've turned off the Shuffle", Toast.LENGTH_SHORT).show();
+                } else {
+                    shuffleButton.setTextColor(getResources().getColor(R.color.colorAccentOn));
+                    isShuffled = true;
+                    Collections.shuffle(SongItems);
+                    Toast.makeText(this, "You've shuffled the ArrayList. Random song will be selected", Toast.LENGTH_SHORT).show();
+                }
                 nowPlayingArtistImage.setImageResource(SongItems.get(temporaryCount).getImage());
                 nowPlayingArtist.setText(SongItems.get(temporaryCount).getArtistName());
                 nowPlayingSong.setText(SongItems.get(temporaryCount).getSongName());

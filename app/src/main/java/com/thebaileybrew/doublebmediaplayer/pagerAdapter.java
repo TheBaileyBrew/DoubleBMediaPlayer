@@ -16,18 +16,17 @@ public class pagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch(position) {
             case 0: // Search
-                return FragmentHomePage.newInstance();
+                return FragmentSearch.newInstance();
             case 1: // Genres
-                return FragmentHomePage.newInstance();
+                return FragmentGenre.newInstance();
             case 2: // Home
                 return FragmentHomePage.newInstance();
             case 3: // A to Z
-                return FragmentHomePage.newInstance();
+                return FragmentAlpha.newInstance();
             case 4: // Playlists
-                return FragmentHomePage.newInstance();
-            default:
-                return FragmentHomePage.newInstance();
+                return FragmentPlaylist.newInstance();
         }
+        return null;
     }
 
     @Override

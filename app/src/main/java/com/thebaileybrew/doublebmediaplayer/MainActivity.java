@@ -5,6 +5,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import it.sephiroth.android.library.bottomnavigation.BottomNavigation;
 
@@ -12,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigation musicNavigator;
     PagerAdapter musicPagerAdapter;
-
+    ViewPager pager;
     Toolbar toolbar;
 
 
@@ -20,7 +23,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Toolbar mainToolbar = findViewById(R.id.mainToolbar);
+        setSupportActionBar(mainToolbar);
+        setTitle(getResources().getString(R.string.app_name));
+        mainToolbar.setLogoDescription(getResources().getString(R.string.logo_desc));
 
         //https://github.com/florent37/DiagonalLayout
 
@@ -29,47 +35,51 @@ public class MainActivity extends AppCompatActivity {
         //https://github.com/sephiroth74/Material-BottomNavigation
 
         musicNavigator = findViewById(R.id.bottomNavigation);
-        musicNavigator.setSelectedIndex(2,true);
-        final ViewPager pager = findViewById(R.id.viewPager);
+        musicNavigator.setSelectedIndex(2, true);
+        pager = findViewById(R.id.viewPager);
         musicPagerAdapter = new pagerAdapter(getSupportFragmentManager());
         pager.setAdapter(musicPagerAdapter);
-        pager.setCurrentItem(2,true);
+        pager.setCurrentItem(2, true);
 
         musicNavigator.setOnMenuItemClickListener(new BottomNavigation.OnMenuItemSelectionListener() {
             @Override
             public void onMenuItemSelect(int i, int i1, boolean b) {
-                pager.setCurrentItem(i1,true);
+                pager.setCurrentItem(i1, true);
             }
+
             @Override
             public void onMenuItemReselect(int i, int i1, boolean b) {
 
             }
         });
 
-
-        //TODO: Need to create the Adapter For Material Leanback
-
-        //        SongItems = new ArrayList<>();
-        //        SongItems.add(new songItem(1,"Luca Stricagnoli","Thunderstruck",R.drawable.luca_image_300, "Instrumental"));
-        //        SongItems.add(new songItem(2,"Pop Evil", "Monster You Made", R.drawable.pop_evil_700, "Rock"));
-        //        SongItems.add(new songItem(3,"Disturbed", "Sound of Silence", R.drawable.disturbed_300, "Rock"));
-        //        SongItems.add(new songItem(4,"Metallica","Fade to Black", R.drawable.metallica_400, "Rock"));
-        //        SongItems.add(new songItem(5,"Pop Evil", "Waking Lions", R.drawable.pop_evil_700, "Rock"));
-        //        SongItems.add(new songItem(6,"Pop Evil", "The Big House",R.drawable.pop_evil_700, "Rock"));
-        //        SongItems.add(new songItem(7,"Metallica", "Enter The Sandman", R.drawable.metallica_400, "Rock"));
-        //        SongItems.add(new songItem(8,"Two Cellos", "Smells Like Teen Spirit", R.drawable.twocellos_900, "Instrumental"));
-        //        SongItems.add(new songItem(9,"Lindsey Stirling", "Radioactive",R.drawable.lindsey_stirling_1000, "Instrumental"));
-        //        SongItems.add(new songItem(10, "Two Cellos", "Smooth Criminal", R.drawable.twocellos_900, "Instrumental"));
-        //        SongItems.add(new songItem(11, "Andy McKee", "Art of Motion", R.drawable.andymckee_800,"Instrumental"));
-        //        SongItems.add(new songItem(12, "The Chainsmokers", "Everybody Hates Me", R.drawable.chainsmokers_500, "Electronic"));
-        //        SongItems.add(new songItem(13, "The Chainsmokers", "Sick Boy", R.drawable.chainsmokers_500, "Electronic"));
-        //        SongItems.add(new songItem(14, "Ed Sheeran", "Shape of You", R.drawable.sheeran_700, "Pop"));
-        //        SongItems.add(new songItem(15, "Fall Out Boy", "Hum Hallelujah", R.drawable.falloutboy_500, "Alt Rock"));
-        //        SongItems.add(new songItem(16, "Green Day", "American Idiot", R.drawable.greenday_700, "Alt Rock"));
-        //        SongItems.add(new songItem(17, "Fall Out Boy", "The Mighty Fall", R.drawable.falloutboy_500, "Alt Rock"));
-        //        SongItems.add(new songItem(18, "Imagine Dragons", "Radioactive", R.drawable.imaginedragons_1000, "Pop"));
-        //        SongItems.add(new songItem(19, "Imagine Dragons", "Thunder", R.drawable.imaginedragons_1000, "Pop"));
-        //        SongItems.add(new songItem(20, "Marshmello", "Alone", R.drawable.marshmello_900, "Electronic"));
-
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the toolbar menu
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.action_new: //Add New Music
+                Toast.makeText(this, "You can add local music files...", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.action_refresh: //Return to Home Page
+                Toast.makeText(this, "Refreshing App", Toast.LENGTH_LONG).show();
+                pager.setCurrentItem(2, true);
+                musicNavigator.setSelectedIndex(2, true);
+                break;
+            case R.id.action_settings: //Display App Settings
+                Toast.makeText(this, "You want to change some settings...", Toast.LENGTH_LONG).show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

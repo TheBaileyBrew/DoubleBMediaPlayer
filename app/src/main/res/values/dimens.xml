@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="first_keyline">16dp</dimen>
+    <dimen name="second_keyline">72dp</dimen>
+    <dimen name="toolbar_horizontal_padding">4dp</dimen>
+    <dimen name="toolbar_vertical_padding">4dp</dimen>
+
+
+    <!-- DIMENS FOR TABLET
+    <dimen name="first_keyline">24dp</dimen>
+    <dimen name="second_keyline">80dp</dimen>
+    <dimen name="toolbar_horizontal_padding">12dp</dimen> -->
+
+
+</resources>

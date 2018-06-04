@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/transparent"
-    app:bbn_itemColorActive="@color/colorPrimaryDark"
+    app:bbn_itemColorActive="@color/colorAccent"
     app:bbn_itemColorInactive="@color/colorPrimaryLight">
 
     <item
