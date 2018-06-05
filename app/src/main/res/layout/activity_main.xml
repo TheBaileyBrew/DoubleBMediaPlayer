@@ -15,7 +15,7 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/Widget.AppCompat.Toolbar"
         app:popupTheme="@style/menu_text"
-        android:elevation="8dp"
+        android:elevation="6dp"
         app:titleTextColor="@color/colorAccent"
         app:titleTextAppearance="@style/Toolbar.TitleText"
         android:background="@color/colorPrimary" />
