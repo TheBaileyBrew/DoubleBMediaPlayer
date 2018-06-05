@@ -10,4 +10,7 @@
     <color name="colorAccent">#00bcd4</color>
     <color name="colorAccentOn">#f57f17</color>
     <color name="colorAccentFade">#9c00bcd4</color>
+
+    <color name="colorGenreTextBackground">#ae737272</color>
+    <color name="colorGenreFadeBackground">#bb151515</color>
 </resources>

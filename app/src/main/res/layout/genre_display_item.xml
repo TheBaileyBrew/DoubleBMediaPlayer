@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp">
+            <ImageView
+                android:id="@+id/genre_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/chainsmokers_500"/>
+            <ImageView
+                android:id="@+id/genre_background_fade"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorGenreFadeBackground"/>
+            <TextView
+                android:id="@+id/genre_name"
+                android:background="@color/colorGenreTextBackground"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                android:text="GENRE NAME"/>
+            <ImageView
+                android:id="@+id/genre_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_music_video_black_100dp"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</FrameLayout>
