@@ -15,7 +15,7 @@ import com.thebaileybrew.doublebmediaplayer.songArrayList;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentGenre extends Fragment implements GenreAdapter.ItemListener{
+public class FragmentGenre extends Fragment {
     public static FragmentGenre newInstance() {
         FragmentGenre fragment = new FragmentGenre();
         return fragment;
@@ -41,7 +41,7 @@ public class FragmentGenre extends Fragment implements GenreAdapter.ItemListener
         recyclerGridView = view.findViewById(R.id.grid_recycler);
         songArrayList genres = new songArrayList();
         genreList = genres.getGenreList();
-        GenreAdapter adapter = new GenreAdapter(view.getContext(),genreList,this) {};
+        GenreAdapter adapter = new GenreAdapter(genreList);
         recyclerGridView.setAdapter(adapter);
 
         AutoFitGridLayoutManager layoutManager = new AutoFitGridLayoutManager(view.getContext(),300);
@@ -49,5 +49,5 @@ public class FragmentGenre extends Fragment implements GenreAdapter.ItemListener
 
         return view;
     }
-    
+
 }
