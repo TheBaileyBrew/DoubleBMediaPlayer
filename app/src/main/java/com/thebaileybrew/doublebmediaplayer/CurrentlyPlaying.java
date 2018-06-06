@@ -1,6 +1,7 @@
 package com.thebaileybrew.doublebmediaplayer;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -19,10 +20,13 @@ import java.util.List;
 
 public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickListener{
 
+    private MediaPlayer mediaPlayer;
+
     List<songItem> SongItems;
     int temporaryCount;
     String currentArtist;
     String currentSong;
+    String currentGenre;
     int currentImage;
     int currentPosition;
     TextView nowPlayingArtist;
@@ -36,6 +40,7 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
     Button listButton;
     Boolean isPlaying = false;
     Boolean isShuffled = false;
+    Boolean genrePlaylist = false;
     BubbleSeekBar musicSeekbar;
     Handler updateHandler;
 
@@ -43,16 +48,35 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         songArrayList songs = new songArrayList();
+        ArrayList<songItem> tempList = new ArrayList();
         SongItems = songs.getSongList();
+        mediaPlayer = MediaPlayer.create(this,null);
+        Toast.makeText(this, "SongSize is currently: " + String.valueOf(SongItems.size()), Toast.LENGTH_SHORT).show();
         setContentView(R.layout.activity_currently_playing);
 
         //Define runnable for seekbar progression
         initializeViews();
+        currentGenre = getIntent().getStringExtra("SelectedGenre");
+        genrePlaylist = getIntent().getBooleanExtra("Playlist", false);
         currentImage = getIntent().getIntExtra("SelectedImage", 0);
         currentArtist = getIntent().getStringExtra("SelectedArtist");
         currentSong = getIntent().getStringExtra("SelectedSong");
         currentPosition = getIntent().getIntExtra("Position", 0);
-        temporaryCount = currentPosition - 1;
+        if (genrePlaylist) {
+            for (songItem song : SongItems) {
+                if (song.getGenre().equals(currentGenre)) {
+                    tempList.add(song);
+                }
+            }
+            SongItems.clear();
+            SongItems = tempList;
+            temporaryCount = currentPosition + 2;
+            Toast.makeText(this, "Current position is: " + String.valueOf(temporaryCount), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Current SongSize is: " + String.valueOf(SongItems.size()), Toast.LENGTH_SHORT).show();
+        } else {
+            temporaryCount = currentPosition - 1;
+            Toast.makeText(this, "Current position is: " + String.valueOf(temporaryCount), Toast.LENGTH_SHORT).show();
+        }
         //Set initial Current Playing view
         nowPlayingArtist.setText(currentArtist);
         nowPlayingSong.setText(currentSong);
@@ -82,7 +106,7 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
         int clickedId = v.getId();
         switch (clickedId) {
             case R.id.song_forward:
-                if (temporaryCount == 19) {
+                if (temporaryCount == SongItems.size() - 1) {
                     temporaryCount = -1;
                 }
                 temporaryCount = temporaryCount + 1;
@@ -92,7 +116,7 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.song_rewind:
                 if (temporaryCount == 0) {
-                    temporaryCount = 20;
+                    temporaryCount = SongItems.size();
                 }
                 temporaryCount = temporaryCount - 1;
                 nowPlayingArtistImage.setImageResource(SongItems.get(temporaryCount).getImage());

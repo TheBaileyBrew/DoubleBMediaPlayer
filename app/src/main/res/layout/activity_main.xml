@@ -23,9 +23,10 @@
     <ImageView
         android:id="@+id/background_logo"
         android:alpha=".55"
-        android:layout_marginTop="50dp"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:paddingTop="20dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/baileybrewmediafade"/>
 

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginBottom="4dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="20dp"
         android:fontFamily="@font/no_reference"
         android:shadowDx="8"
         android:shadowDy="8"
@@ -22,13 +22,14 @@
         android:id="@+id/song_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginBottom="4dp"
         android:fontFamily="@font/no_reference"
         android:shadowDx="8"
         android:shadowDy="8"
         android:shadowRadius="4"
         android:shadowColor="@color/colorPrimaryText"
-        android:textSize="22sp"
+        android:textSize="24sp"
         android:textColor="@color/colorText"/>
 
 </LinearLayout>

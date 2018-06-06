@@ -11,6 +11,6 @@
     <color name="colorAccentOn">#f57f17</color>
     <color name="colorAccentFade">#9c00bcd4</color>
 
-    <color name="colorGenreTextBackground">#ae737272</color>
-    <color name="colorGenreFadeBackground">#bb151515</color>
+    <color name="colorGenreTextBackground">#aea7a7a7</color>
+    <color name="colorGenreFadeBackground">#bbdadada</color>
 </resources>

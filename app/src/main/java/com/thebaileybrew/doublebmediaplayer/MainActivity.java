@@ -39,12 +39,50 @@ public class MainActivity extends AppCompatActivity {
         pager = findViewById(R.id.viewPager);
         musicPagerAdapter = new pagerAdapter(getSupportFragmentManager());
         pager.setAdapter(musicPagerAdapter);
+        pager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                switch(position){
+                    case 0:
+                        musicNavigator.setSelectedIndex(0,true);
+                        break;
+                    case 1:
+                        musicNavigator.setSelectedIndex(1,true);
+                        break;
+                    case 2:
+                        musicNavigator.setSelectedIndex(2,true);
+                        break;
+                    case 3:
+                        musicNavigator.setSelectedIndex(3,true);
+                        break;
+                    case 4:
+                        musicNavigator.setSelectedIndex(4,true);
+                        break;
+                }
+            }
+        });
         pager.setCurrentItem(2, true);
 
         musicNavigator.setOnMenuItemClickListener(new BottomNavigation.OnMenuItemSelectionListener() {
             @Override
             public void onMenuItemSelect(int i, int i1, boolean b) {
-                pager.setCurrentItem(i1, true);
+                switch(i1) {
+                    case 0:
+                        pager.setCurrentItem(0,false);
+                        break;
+                    case 1:
+                        pager.setCurrentItem(1,false);
+                        break;
+                    case 2:
+                        pager.setCurrentItem(2,false);
+                        break;
+                    case 3:
+                        pager.setCurrentItem(3,false);
+                        break;
+                    case 4:
+                        pager.setCurrentItem(4,false);
+                        break;
+                }
             }
 
             @Override

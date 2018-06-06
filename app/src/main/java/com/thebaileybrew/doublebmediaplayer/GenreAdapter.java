@@ -15,15 +15,24 @@ import java.util.ArrayList;
 public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> {
 
     private ArrayList<genreItem> genreItems;
+    CustomerGenreClickInterface genreListener;
 
-    public GenreAdapter(ArrayList<genreItem> GenreItems) {
+    public GenreAdapter(ArrayList<genreItem> GenreItems, CustomerGenreClickInterface listener) {
         this.genreItems = GenreItems;
+        this.genreListener = listener;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.genre_display_item,parent,false);
-        return new ViewHolder(view);
+        ViewHolder vHolder = new ViewHolder(view);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                genreListener.onItemClick(view, vHolder.getLayoutPosition());
+            }
+        });
+        return vHolder;
     }
 
     @Override
@@ -41,7 +50,7 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
         return genreItems.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder  {
         private TextView nameOfGenre;
         private ImageView backgroundOfGenre;
         private ImageView iconOfGenre;
@@ -51,7 +60,9 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
             nameOfGenre = genreView.findViewById(R.id.genre_name);
             backgroundOfGenre = genreView.findViewById(R.id.genre_background);
             iconOfGenre = genreView.findViewById(R.id.genre_icon);
+
         }
+
 
     }
 }

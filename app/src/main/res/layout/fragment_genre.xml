@@ -6,16 +6,27 @@
     android:background="@android:color/transparent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/grid_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginBottom="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="200dp"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
         android:scrollbars="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <ListView
+        android:id="@+id/genre_display_artistlist"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/grid_recycler">
+    </ListView>
 
 
 </android.support.constraint.ConstraintLayout>
