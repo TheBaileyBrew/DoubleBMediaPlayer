@@ -13,63 +13,45 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> {
-    //Follow this tutorial
-    //https://www.journaldev.com/13792/android-gridlayoutmanager-example
 
-    ArrayList genreValues;
-    Context genreContext;
-    ItemListener genreListener;
+    private ArrayList<genreItem> genreItems;
 
-    public GenreAdapter (Context context, ArrayList values, ItemListener itemListener) {
-
-        this.genreValues = values;
-        this.genreContext = context;
-        this.genreListener = itemListener;
+    public GenreAdapter(ArrayList<genreItem> GenreItems) {
+        this.genreItems = GenreItems;
     }
-
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-        public TextView genreName;
-        public ImageView genreBackground;
-        public ImageView genreIcon;
-        genreItem genreItem;
-
-        public ViewHolder(View genreView) {
-            super(genreView);
-            genreView.setOnClickListener(this);
-
-            genreName = genreView.findViewById(R.id.genre_name);
-            genreBackground = genreView.findViewById(R.id.genre_background);
-            genreIcon = genreView.findViewById(R.id.genre_icon);
-        }
-
-        @Override
-        public void onClick(View view) {
-            if (genreListener != null) {
-                genreListener.onItemClick(genreItem);
-            }
-        }
-    }
-
-    GenreAdapter(ArrayList<genreItem> genreValues) {this.genreValues = genreValues;}
 
     @Override
-    public GenreAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(genreContext).inflate(R.layout.genre_display_item, parent, false);
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.genre_display_item,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        //TODO Figure out Holder Details
+        genreItem currentGenre = genreItems.get(position);
+
+        holder.nameOfGenre.setText(currentGenre.getGenreName());
+        holder.backgroundOfGenre.setImageResource(currentGenre.getGenreBackground());
+        holder.iconOfGenre.setImageResource(currentGenre.getGenreIcon());
+
     }
 
     @Override
     public int getItemCount() {
-        return genreValues.size();
+        return genreItems.size();
     }
 
-    public interface ItemListener {
-        void onItemClick(genreItem item);
+    class ViewHolder extends RecyclerView.ViewHolder {
+        private TextView nameOfGenre;
+        private ImageView backgroundOfGenre;
+        private ImageView iconOfGenre;
+
+        public ViewHolder(View genreView) {
+            super(genreView);
+            nameOfGenre = genreView.findViewById(R.id.genre_name);
+            backgroundOfGenre = genreView.findViewById(R.id.genre_background);
+            iconOfGenre = genreView.findViewById(R.id.genre_icon);
+        }
+
     }
 }

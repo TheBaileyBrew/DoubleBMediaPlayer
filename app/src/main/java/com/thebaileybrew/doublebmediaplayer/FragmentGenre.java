@@ -49,9 +49,5 @@ public class FragmentGenre extends Fragment implements GenreAdapter.ItemListener
 
         return view;
     }
-
-    @Override
-    public void onItemClick(genreItem item) {
-
-    }
+    
 }
