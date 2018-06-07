@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar mainToolbar = findViewById(R.id.mainToolbar);
         setSupportActionBar(mainToolbar);
         setTitle(getResources().getString(R.string.app_name));
-        mainToolbar.setLogoDescription(getResources().getString(R.string.logo_desc));
 
         //https://github.com/florent37/DiagonalLayout
 
@@ -45,18 +44,23 @@ public class MainActivity extends AppCompatActivity {
                 switch(position){
                     case 0:
                         musicNavigator.setSelectedIndex(0,true);
+                        setTitle(getResources().getString(R.string.app_search));
                         break;
                     case 1:
                         musicNavigator.setSelectedIndex(1,true);
+                        setTitle(getResources().getString(R.string.app_genres));
                         break;
                     case 2:
                         musicNavigator.setSelectedIndex(2,true);
+                        setTitle(getResources().getString(R.string.app_name));
                         break;
                     case 3:
                         musicNavigator.setSelectedIndex(3,true);
+                        setTitle(getResources().getString(R.string.app_alpha));
                         break;
                     case 4:
                         musicNavigator.setSelectedIndex(4,true);
+                        setTitle(getResources().getString(R.string.app_playlists));
                         break;
                 }
             }
@@ -69,18 +73,23 @@ public class MainActivity extends AppCompatActivity {
                 switch(i1) {
                     case 0:
                         pager.setCurrentItem(0,false);
+                        setTitle(getResources().getString(R.string.app_search));
                         break;
                     case 1:
                         pager.setCurrentItem(1,false);
+                        setTitle(getResources().getString(R.string.app_genres));
                         break;
                     case 2:
                         pager.setCurrentItem(2,false);
+                        setTitle(getResources().getString(R.string.app_name));
                         break;
                     case 3:
                         pager.setCurrentItem(3,false);
+                        setTitle(getResources().getString(R.string.app_alpha));
                         break;
                     case 4:
                         pager.setCurrentItem(4,false);
+                        setTitle(getResources().getString(R.string.app_playlists));
                         break;
                 }
             }

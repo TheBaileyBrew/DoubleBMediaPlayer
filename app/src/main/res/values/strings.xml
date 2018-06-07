@@ -1,10 +1,15 @@
 <resources>
     <string name="app_name">Bailey Brew Media Player</string>
+    <string name="app_genres">Genres</string>
+    <string name="app_search">Song Search</string>
+    <string name="app_alpha">Alphabetical</string>
+    <string name="app_playlists">Playlists</string>
+
     <string name="action_settings">Settings</string>
     <string name="action_refresh">Return Home</string>
     <string name="action_new">Add Music</string>
     <string name="logo_desc">App Logo</string>
-
     <string name="left_arrow"><![CDATA[<]]></string>
     <string name="right_arrow"><![CDATA[>]]></string>
+
 </resources>

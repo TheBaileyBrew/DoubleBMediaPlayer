@@ -94,6 +94,9 @@ public class FragmentGenre extends Fragment {
                     case 8: //Jazz
                         genre = "Jazz";
                         break;
+                    case 9: //Religious
+                        genre = "Religious";
+                        break;
                 }
                 for (songItem song : SongItems) {
                     if (song.getGenre().equals(genre)) {
