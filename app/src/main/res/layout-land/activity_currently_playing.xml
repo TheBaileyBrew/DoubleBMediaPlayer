@@ -9,12 +9,12 @@
     <com.github.florent37.diagonallayout.DiagonalLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:diagonal_angle="25"
+        app:diagonal_angle="44"
         diagonal:diagonal_direction="left"
         diagonal:diagonal_position="lef">
         <ImageView
             android:id="@+id/now_playing_artist_image"
-            android:layout_width="wrap_content"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
             android:elevation="10dp"

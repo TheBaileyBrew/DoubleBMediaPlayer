@@ -62,7 +62,7 @@ public class FragmentAlpha extends Fragment {
                 selectedArtist = SongItems.get(position).getArtistName();
                 selectedSong = SongItems.get(position).getSongName();
                 selectedImage = SongItems.get(position).getImage();
-                currentPosition = SongItems.get(position).getId();
+                currentPosition = parent.getSelectedItemPosition();
                 Toast.makeText(view.getContext(), "You've selected: " + selectedArtist + " and " + selectedSong, Toast.LENGTH_LONG).show();
                 Intent openSongPlayer = new Intent(view.getContext(),CurrentlyPlaying.class);
                 openSongPlayer.putExtra("SelectedArtist", selectedArtist);

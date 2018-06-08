@@ -44,7 +44,7 @@ public class songArrayList extends ArrayList{
         SongItems.add(new songItem(32, "Rascal Flatts", "What Hurts The Most", R.drawable.rascalflatts_800, "Country", R.raw.hurtsthemost_rascall));
         SongItems.add(new songItem(33, "Rascal Flatts", "Life is a Highway", R.drawable.rascalflatts_800, "Country", R.raw.highway_rascal));
         SongItems.add(new songItem(34, "Miranda Lambert", "Kerosene", R.drawable.lambert_800, "Country", R.raw.kerosene_miranda));
-        SongItems.add(new songItem(35, "Marshmello", "Everyday", R.drawable.marshmello_900, "Electronic", R.raw.everyday_marsh));
+        SongItems.add(new songItem(35, "Marshmello", "Let Me Love You", R.drawable.marshmello_900, "Electronic", R.raw.letmelove_marsh));
         SongItems.add(new songItem(36,"Anberlin", "Breathe", R.drawable.anberlin_800, "Religious", R.raw.breathe_anberlin));
         SongItems.add(new songItem(37, "Crowder", "I Am", R.drawable.crowder_800, "Religious", R.raw.iam_crowder));
         SongItems.add(new songItem(38, "Anberlin", "Feel Good Drag", R.drawable.anberlin_800, "Religious", R.raw.feelgooddrag_anberlin));

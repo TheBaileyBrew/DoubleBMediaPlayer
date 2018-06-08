@@ -146,7 +146,7 @@
             android:layout_marginRight="26dp"
             android:layout_alignParentEnd="true"
             android:fontFamily="@font/no_reference"
-            android:textSize="52sp"
+            android:textSize="46sp"
             android:shadowDx="8"
             android:shadowDy="8"
             android:shadowRadius="8"

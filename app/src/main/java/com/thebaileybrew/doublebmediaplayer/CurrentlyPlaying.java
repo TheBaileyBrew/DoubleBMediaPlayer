@@ -85,7 +85,7 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
                     tempList.add(song); } }
             SongItems.clear();
             SongItems = tempList;
-            temporaryCount = currentPosition + 2;
+            temporaryCount = currentPosition + 1;
         } else {
             temporaryCount = currentPosition - 1;
         }
@@ -97,6 +97,7 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
                     return (o1.getArtistName() + o1.getSongName()).compareTo((o2.getArtistName() + o2.getSongName()));
                 }
             });
+            temporaryCount = currentPosition + 1;
         }
         //Set initial Current Playing view
         nowPlayingArtist.setText(currentArtist);
