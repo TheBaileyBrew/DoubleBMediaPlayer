@@ -98,6 +98,8 @@ public class FragmentGenre extends Fragment {
                         genre = "Religious";
                         break;
                 }
+                // This takes the String value of genre and checks all songs to see if it has the correct genre
+                // If the genre matches, the value is stored in a temporary ArrayList to be passed via Intent.
                 for (songItem song : SongItems) {
                     if (song.getGenre().equals(genre)) {
                         tempList.add(song);

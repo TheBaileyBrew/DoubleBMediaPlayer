@@ -19,6 +19,7 @@ import com.xw.repo.BubbleSeekBar;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickListener{
@@ -47,47 +48,61 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
     Boolean isPaused = false;
     Boolean isShuffled = false;
     Boolean genrePlaylist = false;
+    Boolean alphaPlaylist = false;
     BubbleSeekBar musicSeekbar;
-    Handler updateHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Creates an instance of the songArrayList custom class extender and retrieves the song set
+        //Song set is stored in local SongItems ArrayList
         songArrayList songs = new songArrayList();
-        ArrayList<songItem> tempList = new ArrayList();
         SongItems = songs.getSongList();
-        Toast.makeText(this, "SongSize is currently: " + String.valueOf(SongItems.size()), Toast.LENGTH_SHORT).show();
-        setContentView(R.layout.activity_currently_playing);
 
-        //Define runnable for seekbar progression
+        ArrayList<songItem> tempList = new ArrayList();
+        //Toast.makeText(this, "SongSize is currently: " + String.valueOf(SongItems.size()), Toast.LENGTH_SHORT).show();
+        setContentView(R.layout.activity_currently_playing);
+        //TODO: Define seekbar progression :: Future Enhancement
         initializeViews();
+        // Collects the passed data via intent call from Main Activity/Fragments
         currentGenre = getIntent().getStringExtra("SelectedGenre");
         genrePlaylist = getIntent().getBooleanExtra("Playlist", false);
+        alphaPlaylist = getIntent().getBooleanExtra("APlaylist", false);
         currentImage = getIntent().getIntExtra("SelectedImage", 0);
         currentArtist = getIntent().getStringExtra("SelectedArtist");
         currentSong = getIntent().getStringExtra("SelectedSong");
         currentPosition = getIntent().getIntExtra("Position", 0);
         currentPlayingSong = SongItems.get(temporaryCount).getSongPlayable();
+        /*
+        * Checks to see if user came from Genre Fragment or Alpha Fragment
+        * Boolean value genrePlaylist is only passed as true from Genre Fragment
+        * Boolean value alphaPlaylist is only passed as true from Alpha Fragment
+        */
         if (genrePlaylist) {
+            //If user navigated from Genre Fragment, then list of songs is recreated and stored as temporary Array
             for (songItem song : SongItems) {
                 if (song.getGenre().equals(currentGenre)) {
-                    tempList.add(song);
-                }
-            }
+                    tempList.add(song); } }
             SongItems.clear();
             SongItems = tempList;
             temporaryCount = currentPosition + 2;
-            Toast.makeText(this, "Current position is: " + String.valueOf(temporaryCount), Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, "Current SongSize is: " + String.valueOf(SongItems.size()), Toast.LENGTH_SHORT).show();
         } else {
             temporaryCount = currentPosition - 1;
-            Toast.makeText(this, "Current position is: " + String.valueOf(temporaryCount), Toast.LENGTH_SHORT).show();
+        }
+        if (alphaPlaylist) {
+            //If user navigated from Alpha Fragment, then list of songs is resorted to match same order from A - Z
+            Collections.sort(SongItems, new Comparator<songItem>() {
+                @Override
+                public int compare(songItem o1, songItem o2) {
+                    return (o1.getArtistName() + o1.getSongName()).compareTo((o2.getArtistName() + o2.getSongName()));
+                }
+            });
         }
         //Set initial Current Playing view
         nowPlayingArtist.setText(currentArtist);
         nowPlayingSong.setText(currentSong);
         nowPlayingArtistImage.setImageResource(currentImage);
-        //Set onClickListeners for buttons
+        //Set onClickListeners for all buttons
         playButton.setOnClickListener(this);
         forwardButton.setOnClickListener(this);
         reverseButton.setOnClickListener(this);
@@ -109,6 +124,7 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
         listButton = findViewById(R.id.song_playlists);
     }
 
+    // onClick Method defines what happens when any of the buttons are clicked from within this view
     @Override
     public void onClick(View v) {
         int clickedId = v.getId();

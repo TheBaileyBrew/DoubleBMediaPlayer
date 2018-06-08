@@ -14,7 +14,10 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+// This Adapter populates the Alphabetical sort in the AlphaFragment
+
 public class AlphaAdapter extends ArrayAdapter<songItem> {
+
 
     private Context mContext;
     private ArrayList<songItem> SongItems;

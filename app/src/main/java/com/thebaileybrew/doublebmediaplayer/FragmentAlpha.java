@@ -29,6 +29,7 @@ public class FragmentAlpha extends Fragment {
     String selectedSong;
     int selectedImage;
     int currentPosition;
+    Boolean alphaPlaylist;
 
 
     @Override
@@ -44,6 +45,7 @@ public class FragmentAlpha extends Fragment {
         SongItems = songs.getSongList();
 
         Collections.sort(SongItems, new Comparator<songItem>() {
+            // This compares and resorts the ArrayList in alphabetical order by combining Artist + Song to create a unique identifier
             @Override
             public int compare(songItem o1, songItem o2) {
                 return (o1.getArtistName() + o1.getSongName()).compareTo((o2.getArtistName() + o2.getSongName()));
@@ -56,6 +58,7 @@ public class FragmentAlpha extends Fragment {
         alphaListing.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                alphaPlaylist = true;
                 selectedArtist = SongItems.get(position).getArtistName();
                 selectedSong = SongItems.get(position).getSongName();
                 selectedImage = SongItems.get(position).getImage();
@@ -66,6 +69,7 @@ public class FragmentAlpha extends Fragment {
                 openSongPlayer.putExtra("SelectedSong", selectedSong);
                 openSongPlayer.putExtra("SelectedImage", selectedImage);
                 openSongPlayer.putExtra("Position", currentPosition);
+                openSongPlayer.putExtra("APlaylist",alphaPlaylist);
                 view.getContext().startActivity(openSongPlayer);
             }
         });

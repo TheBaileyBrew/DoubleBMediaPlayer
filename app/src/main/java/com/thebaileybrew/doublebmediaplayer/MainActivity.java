@@ -1,5 +1,19 @@
 package com.thebaileybrew.doublebmediaplayer;
 
+/*
+* This application was designed with the intent of playing local music files
+*
+* Future goals are to allow for user creation of specified playlists
+*
+* I have implemented 3 libraries into this application:
+* Bottom Navigation (Implemented in MainActivity and paired with ViewPager) -- https://github.com/sephiroth74/Material-BottomNavigation
+* Diagonal Layout (Implemented in CurrentlyPlaying) -- https://github.com/florent37/DiagonalLayout
+* Material LeanBack (Implemented in FragmentHome) -- https://github.com/florent37/MaterialLeanBack
+*
+* Application Written by Matthew Bailey (AKA: The Bailey Brew)
+* Assistance in logic collected via StackOverflow & Iva Ivanova (GWG Scholarship Project Coach)
+*/
+
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -27,17 +41,13 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mainToolbar);
         setTitle(getResources().getString(R.string.app_name));
 
-        //https://github.com/florent37/DiagonalLayout
-
-        //https://github.com/florent37/MaterialLeanBack
-
-        //https://github.com/sephiroth74/Material-BottomNavigation
-
         musicNavigator = findViewById(R.id.bottomNavigation);
         musicNavigator.setSelectedIndex(2, true);
         pager = findViewById(R.id.viewPager);
         musicPagerAdapter = new pagerAdapter(getSupportFragmentManager());
         pager.setAdapter(musicPagerAdapter);
+
+        // This defines what should happen when the ViewPager is advanced via swipe interaction
         pager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -67,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         });
         pager.setCurrentItem(2, true);
 
+        // This sets the actions for what happens when a menu item is selected from the Bottom Navigation
         musicNavigator.setOnMenuItemClickListener(new BottomNavigation.OnMenuItemSelectionListener() {
             @Override
             public void onMenuItemSelect(int i, int i1, boolean b) {
