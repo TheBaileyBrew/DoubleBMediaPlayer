@@ -24,7 +24,7 @@
             android:fontFamily="@font/no_reference"
             android:textSize="22sp"
             android:textColor="@color/colorPrimaryText"
-            android:text="SONG NAME HERE"/>
+            android:text="SONG NAME"/>
         <TextView
             android:id="@+id/cardview_artist_name"
             android:layout_width="match_parent"
