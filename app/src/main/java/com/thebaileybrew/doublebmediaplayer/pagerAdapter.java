@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class pagerAdapter extends FragmentPagerAdapter {
     private static int NUM_ITEMS = 5;
 
-
     public pagerAdapter (FragmentManager fm) {
         super(fm);
     }

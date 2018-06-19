@@ -31,7 +31,6 @@ public class FragmentAlpha extends Fragment {
     int currentPosition;
     Boolean alphaPlaylist;
 
-
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,10 +72,6 @@ public class FragmentAlpha extends Fragment {
                 view.getContext().startActivity(openSongPlayer);
             }
         });
-
-
-
-
         return view;
     }
 }

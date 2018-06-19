@@ -14,7 +14,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class PlaylistAdapter extends ArrayAdapter<songItem> {
-
     private Context mContext;
     private ArrayList<songItem> SongItems;
 
@@ -36,7 +35,6 @@ public class PlaylistAdapter extends ArrayAdapter<songItem> {
         TextView songName = playlistView.findViewById(R.id.song_name);
         artistName.setText(currentGenreSong.getArtistName());
         songName.setText(currentGenreSong.getSongName());
-
         return playlistView;
     }
 

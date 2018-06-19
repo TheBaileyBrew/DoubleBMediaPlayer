@@ -124,7 +124,6 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
         loopButton = findViewById(R.id.song_loop);
         listButton = findViewById(R.id.song_playlists);
     }
-
     // onClick Method defines what happens when any of the buttons are clicked from within this view
     @Override
     public void onClick(View v) {
@@ -197,7 +196,6 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
                     mediaPlayer.start();
                     mediaPlayer.setOnCompletionListener(mCompleteListener);
                     playButton.setText("PAUSE");
-
                     //TODO: Set the musicSeekbar progressbar animation
                 }
                 break;
@@ -234,7 +232,6 @@ public class CurrentlyPlaying extends AppCompatActivity implements View.OnClickL
         //When app is closed or activity stopped, release media player
         releaseMediaPlayer();
     }
-
 
     // OnCompletionListener Method
     private MediaPlayer.OnCompletionListener mCompleteListener = new MediaPlayer.OnCompletionListener() {

@@ -6,6 +6,5 @@ import android.view.View;
 // This interface is called when used clicks on one of the items in the grid.
 
 public interface CustomerGenreClickInterface {
-
     void onItemClick(View v, int position);
 }

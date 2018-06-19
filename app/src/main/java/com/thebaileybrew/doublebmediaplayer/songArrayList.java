@@ -7,8 +7,6 @@ public class songArrayList extends ArrayList{
     private ArrayList<songItem> SongItems = new ArrayList<>();
     private ArrayList<genreItem> genreList = new ArrayList<>();
 
-    //Get Raw Files from here: http://domino-music.net/?mp3=Jidenna&artist=0
-
     public ArrayList getSongList() {
         SongItems.add(new songItem(1, "Luca Stricagnoli", "Thunderstruck", R.drawable.luca_image_300, "Instrumental", R.raw.thunderstruck_luca));
         SongItems.add(new songItem(2, "Disturbed", "Open Your Eyes", R.drawable.disturbed_300, "Rock", R.raw.openyoureyes_disturbed));
@@ -53,11 +51,8 @@ public class songArrayList extends ArrayList{
         SongItems.add(new songItem(41,"Mumford and Sons", "Little Lion Man", R.drawable.mumford_800, "Folk", R.raw.littlelion_mumford));
         SongItems.add(new songItem(42, "The Gray Havens", "Silver", R.drawable.grayhavens_600, "Folk", R.raw.silver_grayhavens));
         SongItems.add(new songItem(43, "The Gray Havens", "Ghost of a King", R.drawable.grayhavens_600, "Folk", R.raw.ghost_grayhavens));
-
-
         return SongItems;
     }
-
     public ArrayList getGenreList() {
         genreList.add(new genreItem(1,"Rock", R.drawable.rock_icon, R.drawable.rock));
         genreList.add(new genreItem(2,"Electronic", R.drawable.edm_icon, R.drawable.electronic));

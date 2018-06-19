@@ -1,7 +1,6 @@
 package com.thebaileybrew.doublebmediaplayer;
 
 public class genreItem {
-
     /** ID value for song*/
     private final int id;
     /** string value for genre name*/
@@ -17,19 +16,15 @@ public class genreItem {
         this.genreIcon = genreIcon;
         this.genreBackground = genreBackground;
     }
-
     public int getId() {
         return id;
     }
-
     public String getGenreName() {
         return genreName;
     }
-
     public int getGenreIcon() {
         return genreIcon;
     }
-
     public int getGenreBackground() {
         return genreBackground;
     }

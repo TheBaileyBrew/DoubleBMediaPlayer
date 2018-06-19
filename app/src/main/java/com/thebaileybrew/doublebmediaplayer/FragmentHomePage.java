@@ -22,7 +22,6 @@ public class FragmentHomePage extends Fragment {
         FragmentHomePage fragment = new FragmentHomePage();
         return fragment;
     }
-
     String selectedArtist;
     String selectedSong;
     int selectedImage;
@@ -36,7 +35,6 @@ public class FragmentHomePage extends Fragment {
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
         songArrayList songs = new songArrayList();
         SongItems = songs.getSongList();
@@ -65,7 +63,6 @@ public class FragmentHomePage extends Fragment {
                 viewHolder.songImage.setImageResource(SongItems.get(position).getImage());
             }
         });
-
         materialLeanBack.setOnItemClickListener(new MaterialLeanBack.OnItemClickListener() {
             @Override
             public void onTitleClicked(int row, String text) {
@@ -88,6 +85,4 @@ public class FragmentHomePage extends Fragment {
         });
         return view;
     }
-
-
 }

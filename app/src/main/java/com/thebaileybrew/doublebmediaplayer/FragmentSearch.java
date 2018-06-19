@@ -13,7 +13,6 @@ public class FragmentSearch extends Fragment {
         FragmentSearch fragment = new FragmentSearch();
         return fragment;
     }
-
     String selectedArtist;
     String selectedSong;
     int selectedImage;
@@ -27,9 +26,7 @@ public class FragmentSearch extends Fragment {
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         final View view = inflater.inflate(R.layout.fragment_search, container, false);
-
         return view;
     }
 }

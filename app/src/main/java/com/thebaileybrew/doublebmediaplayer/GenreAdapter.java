@@ -38,11 +38,9 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         genreItem currentGenre = genreItems.get(position);
-
         holder.nameOfGenre.setText(currentGenre.getGenreName());
         holder.backgroundOfGenre.setImageResource(currentGenre.getGenreBackground());
         holder.iconOfGenre.setImageResource(currentGenre.getGenreIcon());
-
     }
 
     @Override
@@ -60,9 +58,6 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
             nameOfGenre = genreView.findViewById(R.id.genre_name);
             backgroundOfGenre = genreView.findViewById(R.id.genre_background);
             iconOfGenre = genreView.findViewById(R.id.genre_icon);
-
         }
-
-
     }
 }

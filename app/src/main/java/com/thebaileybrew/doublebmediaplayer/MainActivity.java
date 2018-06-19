@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     ViewPager pager;
     Toolbar toolbar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,13 +39,11 @@ public class MainActivity extends AppCompatActivity {
         Toolbar mainToolbar = findViewById(R.id.mainToolbar);
         setSupportActionBar(mainToolbar);
         setTitle(getResources().getString(R.string.app_name));
-
         musicNavigator = findViewById(R.id.bottomNavigation);
         musicNavigator.setSelectedIndex(2, true);
         pager = findViewById(R.id.viewPager);
         musicPagerAdapter = new pagerAdapter(getSupportFragmentManager());
         pager.setAdapter(musicPagerAdapter);
-
         // This defines what should happen when the ViewPager is advanced via swipe interaction
         pager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -76,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         pager.setCurrentItem(2, true);
-
         // This sets the actions for what happens when a menu item is selected from the Bottom Navigation
         musicNavigator.setOnMenuItemClickListener(new BottomNavigation.OnMenuItemSelectionListener() {
             @Override
@@ -110,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     @Override
@@ -138,6 +133,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 }

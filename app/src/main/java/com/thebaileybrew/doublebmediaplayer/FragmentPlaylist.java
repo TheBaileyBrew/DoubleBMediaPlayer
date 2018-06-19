@@ -13,7 +13,6 @@ public class FragmentPlaylist extends Fragment {
         FragmentPlaylist fragment = new FragmentPlaylist();
         return fragment;
     }
-
     String selectedArtist;
     String selectedSong;
     int selectedImage;
@@ -27,9 +26,7 @@ public class FragmentPlaylist extends Fragment {
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         final View view = inflater.inflate(R.layout.fragment_playlist, container, false);
-
         return view;
     }
 }

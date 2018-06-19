@@ -30,7 +30,6 @@ public class FragmentGenre extends Fragment {
         FragmentGenre fragment = new FragmentGenre();
         return fragment;
     }
-
     String selectedArtist;
     String selectedSong;
     String currentGenre;
@@ -129,10 +128,8 @@ public class FragmentGenre extends Fragment {
             }
         });
         recyclerGridView.setAdapter(adapter);
-
         GridLayoutManager manager = new GridLayoutManager(view.getContext(),3,GridLayoutManager.VERTICAL,false);
         recyclerGridView.setLayoutManager(manager);
-
         return view;
     }
 

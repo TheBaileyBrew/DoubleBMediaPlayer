@@ -17,8 +17,6 @@ import java.util.List;
 // This Adapter populates the Alphabetical sort in the AlphaFragment
 
 public class AlphaAdapter extends ArrayAdapter<songItem> {
-
-
     private Context mContext;
     private ArrayList<songItem> SongItems;
 
@@ -35,13 +33,11 @@ public class AlphaAdapter extends ArrayAdapter<songItem> {
         if (listItem == null) {
             listItem = LayoutInflater.from(mContext).inflate(R.layout.alpha_listview, parent, false);
         }
-
         songItem currentSong = SongItems.get(position);
         TextView artistName = listItem.findViewById(R.id.artist_name);
         artistName.setText(currentSong.getArtistName());
         TextView songName = listItem.findViewById(R.id.song_name);
         songName.setText(currentSong.getSongName());
-
         return listItem;
     }
 }
